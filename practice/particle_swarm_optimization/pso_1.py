@@ -10,7 +10,7 @@ import matplotlib.pyplot as plt
 
 def f(x,y):
     "Objective function"
-    return (x - 3.14)**2 + (y - 2.72)**2 + np.sin(3*x + 1.41) + np.sin(4*y - 1.73)
+    return (1 - x)**2 + 100*(y - x**2)**2
 
 # Compute and plit the function in 3D within [0.5,0.5]
 x, y = np.array(np.meshgrid(np.linspace(0,5,100), np.linspace(0,5,100)))
@@ -21,7 +21,7 @@ y_min = y.ravel()[z.argmin()]
 
 # Hyper-parameter of the algorithm
 c1 = 0.1; c2 = 0.1
-w = 0.8
+w = 0.9
 
 # Create particles
 n_particles = 20
@@ -36,7 +36,7 @@ gbest = pbest[:, pbest_obj.argmin()]
 gbest_obj = pbest_obj.min()
 
 def update():
-    " Funtion to do one iteration of particle swarm optimization"
+    "Funtion to do one iteration of particle swarm optimization"
     global V, X, pbest, pbest_obj, gbest, gbest_obj
 
     # Update paramters
