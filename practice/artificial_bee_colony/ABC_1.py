@@ -76,7 +76,7 @@ while iter_count < itermax:
         sol_prob[name] = float(value / sum(sol for sol in employed_bee_solutions.values()))
     
     """
-    # Sort probablity into ascending order
+    # Sort probablity into ascending order 
     sol_prob = {name: value for name, value in sorted(sol_prob.items(), key=lambda item: item[1])}
     """
 

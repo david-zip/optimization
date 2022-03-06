@@ -1,5 +1,10 @@
 # General Notes and Questions about each Algorithm
 
+## General Questions
+- Whether it is better to haev termination conditions or just maximum iteration counts?
+    - Which is sufficient?
+- If termination conditions are better, which ones may be recommended?
+
 ## Particle Swarm Optimization (PSO)
 - Algorithm functions well and it is able to graphically show the solutions found by each particle at each iteration
 - Current test shows the algorithm **struggles** to find optimal solution (unsure why)
@@ -13,3 +18,5 @@
 
 - Better to ask how this "*probability roulette wheel*" actually works
 - How do I properly convert employed bees into scout bees?
+- Able to effectively find optimal solutions in vicinity with only 100 iterations
+- Work at implementing a termination condition instead of a iteration counter
