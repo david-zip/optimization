@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 def f(x,y):
     a = 1
     b = 100
-    return (a - x)**2 + b*(y - x)**2
+    return (a - x)**2 + b*(y - x**2)**2
 
 # Create employed bees and provide inital solutions
 beehive_population = 100

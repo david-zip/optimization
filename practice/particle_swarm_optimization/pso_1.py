@@ -1,3 +1,9 @@
+"""
+PSO algorithm inspired from the following blog: https://towardsdatascience.com/particle-swarm-optimization-visually-explained-46289eeb2e14
+
+Date: 19/02/22
+"""
+
 from asyncore import write
 from csv import writer
 from pickle import OBJ

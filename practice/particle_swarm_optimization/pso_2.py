@@ -1,3 +1,9 @@
+"""
+Personal first attempt at PSO algorithm
+
+Date: 20/02/22
+"""
+
 import random
 import numpy as np
 import matplotlib.pyplot as plt
@@ -56,8 +62,6 @@ while True:
     te = np.abs(gbest_value_old - gbest_value)/gbest_value_old
     if te < tc:
         break 
-
-
 
 print("""
         gbest = {}, {}
