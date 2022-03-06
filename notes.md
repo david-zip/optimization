@@ -1,7 +1,7 @@
 # General Notes and Questions about each Algorithm
 
 ## General Questions
-- Whether it is better to haev termination conditions or just maximum iteration counts?
+- Whether it is better to have termination conditions or just maximum iteration counts?
     - Which is sufficient?
 - If termination conditions are better, which ones may be recommended?
 

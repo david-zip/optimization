@@ -20,7 +20,7 @@ def f(x,y):
     return (a - x)**2 + b*(y - x**2)**2
 
 # Create employed bees and provide inital solutions
-beehive_population = 100
+beehive_population = 1000
 
 employed_bee_militia = {}
 employed_bee_solutions = {}
