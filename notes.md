@@ -20,3 +20,8 @@
 - How do I properly convert employed bees into scout bees?
 - Able to effectively find optimal solutions in vicinity with only 100 iterations
 - Work at implementing a termination condition instead of a iteration counter
+- Possible termination criteria that states that objective function must be below 0.1 and that after 5 or more iterations of no changes, end while loop
+    - Current termination condition works very wellfor Rosenbrock Equation (a=1 b=N)
+    - **Test for larger values of a and/or b**
+- Once termination condition works consistently, figure out how to graph data
+    - Maybe graph best solution at each iteration? number of iterations?

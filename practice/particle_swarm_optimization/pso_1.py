@@ -16,10 +16,10 @@ import matplotlib.pyplot as plt
 
 def f(x,y):
     "Objective function"
-    return (1 - x)**2 + 100*(y - x**2)**2
+    return (2*x)**2 + y**2 + (x-3)*y
 
 # Compute and plit the function in 3D within [0.5,0.5]
-x, y = np.array(np.meshgrid(np.linspace(0,5,100), np.linspace(0,5,100)))
+x, y = np.array(np.meshgrid(np.linspace(-5,5,100), np.linspace(-5,5,100)))
 z = f(x,y)
 
 x_min = x.ravel()[z.argmin()]

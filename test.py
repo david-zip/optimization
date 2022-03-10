@@ -1,2 +1,2 @@
-for i in range(2):
-    print(i)
+import numpy
+print(numpy.random.uniform(-1,1))
