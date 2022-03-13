@@ -3,8 +3,6 @@ PSO algorithm inspired from the following blog: https://towardsdatascience.com/p
 
 Date: 19/02/22
 """
-
-from asyncore import write
 from csv import writer
 from pickle import OBJ
 from timeit import repeat
@@ -14,9 +12,11 @@ from matplotlib.animation import ImageMagickWriter
 import numpy as np
 import matplotlib.pyplot as plt
 
-def f(x,y):
-    "Objective function"
-    return (2*x)**2 + y**2 + (x-3)*y
+def f(x, y):
+    "Defines objective function"
+    a = 1
+    b = 100
+    return (a - x)**2 + b*(y - x**2)**2
 
 # Compute and plit the function in 3D within [0.5,0.5]
 x, y = np.array(np.meshgrid(np.linspace(-5,5,100), np.linspace(-5,5,100)))

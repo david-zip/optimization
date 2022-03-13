@@ -1,11 +1,9 @@
 """
 Useing the same ABC algorithm made but try to implement a more advanced termination criteria
 
-Minimise the "other" equation
+For minimisation problems
 
-Upper and lower bound of [-5,5]
-
-Date: 08/03/22
+Date: 12/03/22
 """
 import time
 import random
@@ -14,7 +12,13 @@ import matplotlib.pyplot as plt
 
 # Define fitness function
 def f(x,y):
-    return (2*x)**2 + y**2 + (x-3)*y
+    a = 1
+    b = 100
+    return (a - x)**2 + b*(y - x**2)**2
+
+# Define boundaries
+lb = -5 
+ub = 5
 
 # Create employed bees and provide inital solutions
 beehive_population = 100
@@ -24,7 +28,7 @@ employed_bee_solutions = {}
 
 for i in range(int(beehive_population/2)):
     bee_name = "Employed Bee {}".format(i+1)
-    employed_bee_militia[bee_name] = np.random.uniform(0, 10, [2,1])
+    employed_bee_militia[bee_name] = np.random.uniform(lb, ub, [2,1])
 
     x, y = employed_bee_militia[bee_name][0], employed_bee_militia[bee_name][0]
     employed_bee_solutions[bee_name] = f(x,y)
@@ -41,9 +45,9 @@ for name in employed_bee_militia.keys():
     abandon_food[name] = 0
 
 # Start ABC search algorithm
-best_value = 10
+best_value = 100
 best_sol = np.array([0,0])
-old_best_value = 11
+old_best_value = 110
 
 end_counter = 0
 iter_count = 1
@@ -54,16 +58,15 @@ while True:
     for name, value in employed_bee_militia.items():
 
         # Generate a new solution using an update function
-        new_search = np.random.uniform(-5, 5, [2, 1])
         new_solution = []
         for i in range(2):
+            new_search = np.random.uniform(lb, ub)
             r1 = random.uniform(-1, 1)
-            r2 = random.uniform(1e-4, 1)
-            new_solution.append(value[i] + r1 * r2 * (value[i] - new_search[i]))
+            new_solution.append(value[i] + r1 * (value[i] - new_search))
 
         # Generate solution values of new food sources
         new_sol_value = f(new_solution[0], new_solution[1])
-        
+
         if new_sol_value < employed_bee_solutions[name]:
             # If a better solution is found, replace the old solution
             employed_bee_militia[name] = np.array(new_solution)
@@ -89,13 +92,11 @@ while True:
         # Picks a solution based on a roulette wheel selection system?
         if r1 > sol_prob[name]:
             # Onlooker bees generate a new solution using random neighbourhood search
-            new_search = np.random.uniform(0, value[1], [2, 1])
             new_solution = []
             for i in range(2):
+                new_search = np.random.uniform(-value[i], value[i])
                 r1 = random.uniform(-1, 1)
-                r2 = random.uniform(0, 1)
-                r3 = random.randint(0, 3)
-                new_solution.append(value[i] + r1 * r2**r3 * (value[i] - new_search[i]))
+                new_solution.append(value[i] + r1 * (value[i] - new_search))
 
             # Generate solution values of new food sources
             new_sol_value = f(new_solution[0], new_solution[1])
@@ -110,22 +111,12 @@ while True:
 
     # Scout bees will abandon food source if not worked on after 5 iterations
     for name in employed_bee_militia.keys():
-        if abandon_food[name] > 100:
+        if abandon_food[name] > 10:
             # Scout bees will now search for new solutions between given bounds
-            """
-            lb = 0
-            ub = a**2
             new_solution = []
             for i in range(2):
-                r = random.uniform(-1, 1)
+                r = random.uniform(0, 1)
                 new_solution.append(lb + r * (ub - lb))
-            """
-            min_sol_name = min(employed_bee_solutions, key=employed_bee_solutions.get)
-            new_search = np.random.uniform(-5, 5, [2,1])
-            new_solution = []
-            for i in range(2):
-                r2 = random.uniform(-1, 1)
-                new_solution.append(employed_bee_militia[min_sol_name][i] + r2 * (employed_bee_militia[min_sol_name][i] - new_search[i]))
 
             # Generate solution values of new food sources
             new_sol_value = f(new_solution[0], new_solution[1])
@@ -144,12 +135,12 @@ while True:
         old_best_value = best_value
         best_sol = employed_bee_militia[min_sol_name]
         best_value = employed_bee_solutions[min_sol_name]
+        end_counter = 0
 
     # Termination conditions (problem with this)
-    abs_diff = old_best_value - best_value
-    rel_diff = (old_best_value - best_value)/old_best_value
+    rel_diff = np.abs(old_best_value - best_value)/old_best_value
 
-    if best_value < 9e-3 and abs_diff < 0.01:
+    if rel_diff <= 0.5:
         end_counter += 1
     else:
         end_counter = 0
@@ -175,10 +166,11 @@ time_end = time.time()
 # Prints final solution
 print(
     """
-    Artificial Bee Colony on "other" equation:
+    Artificial Bee Colony:
     Best solution found = {}, {}
     Value of best = {}
+    Value of rbest = {}
     Nu. of iterations = {} 
     Time elasped = {}s
-    """.format(float(best_sol[0]), float(best_sol[1]), float(best_value), iter_count, (time_end - time_start))
+    """.format(float(best_sol[0]), float(best_sol[1]), float(best_value), float(rel_diff), iter_count, (time_end - time_start))
 )

@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt
 # Define fitness function
 def f(x,y):
     global a, b
-    a = 10
+    a = 20
     b = 100
     return (a - x)**2 + b*(y - x**2)**2
 

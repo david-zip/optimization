@@ -33,7 +33,8 @@ gbest_old = pbest[:, pbest_value.argmin()]
 gbest_value_old = pbest.min()
 
 niter = 0
-while True:
+iter_max = 10000
+while niter < iter_max:
     for particle in range(n_particles):
         for i in range(1):
             r1 = np.random.rand()
@@ -58,10 +59,7 @@ while True:
             gbest_value = fitness
     
     # Termination criterion
-    tc = 1e-13
-    te = np.abs(gbest_value_old - gbest_value)/gbest_value_old
-    if te < tc:
-        break 
+    niter +=1
 
 print("""
         gbest = {}, {}

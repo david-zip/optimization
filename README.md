@@ -1,10 +1,13 @@
 # Optimization Algorithms
 
 ## Task
+
 Code **Simulated annealing**, **Particle Swarm Optimization**, and **Artificial Bee Colony** for two 2D test functions. The **2D Rosenbrock function** and the function $(2x)^2+y^2+ (x-3)y$.
 
 ## Algorithms
+
 ### Particle Swarm Optimization
+
 Assume we have $P$ particles, individually exhibiting position $i$ at iteration $t$ as $X^i(t)$. They will have the coordinates:
 
 $$
