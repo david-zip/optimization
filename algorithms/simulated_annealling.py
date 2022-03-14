@@ -89,13 +89,22 @@ class SA():
 
         return self.T
 
-    def algorithm(self, f, show=True):
+    def algorithm(self, f, show=True, temp_list=False):
         """
         Simulated annealling algorithm
 
         print=True - Prints final solution, objective function of solution, number of iterations, and time elapsed
         """
+        best_solutions = []
+        best_values = []
+        temperature_list = []
+
         self.initialize(f)
+
+        # Store values in a list
+        best_solutions.append(self.best_solution)
+        best_values.append(self.best_value)
+        temperature_list.append(self.T)
 
         nIter = 0
         time_start = time.time()
@@ -103,7 +112,12 @@ class SA():
             self.neighbourhood_search(f)
             self.find_best()
             self.cooling_schedule()
-            
+
+            # Store values in a list    
+            best_solutions.append(self.best_solution)
+            best_values.append(self.best_value)
+            temperature_list.append(self.T)
+
             # Iteration counter
             nIter += 1
         time_end = time.time()
@@ -119,7 +133,7 @@ class SA():
     """
                 )
 
-        return nIter
+        return best_solutions, best_values, (temperature_list if temp_list==True else None)
 
 if __name__=="__main__":
     
