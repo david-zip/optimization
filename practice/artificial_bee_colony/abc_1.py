@@ -142,6 +142,7 @@ print(
     Artificial Bee Colony on Rosenbrock Equation (a={}, b={})
     Best solution found = {}, {}
     Value of best = {}
+    No. iterations = {}
     Time elasped = {}s
-    """.format(a, b, float(best_sol[0]), float(best_sol[1]), float(best_value), (time_end - time_start))
+    """.format(a, b, float(best_sol[0]), float(best_sol[1]), float(best_value), iter_count, (time_end - time_start))
 )

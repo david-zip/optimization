@@ -8,7 +8,6 @@ Date: 12/03/22
 import time
 import random
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Define fitness function
 def f(x,y):

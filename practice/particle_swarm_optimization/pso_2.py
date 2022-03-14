@@ -3,10 +3,7 @@ Personal first attempt at PSO algorithm
 
 Date: 20/02/22
 """
-
-import random
 import numpy as np
-import matplotlib.pyplot as plt
 
 def f(x,y):
     "Objective function"

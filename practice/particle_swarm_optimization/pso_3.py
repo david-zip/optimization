@@ -6,7 +6,6 @@ Global communication
 Date: 07/03/22
 """
 import time
-import random
 import numpy as np
 
 def f(x, y):

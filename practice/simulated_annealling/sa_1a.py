@@ -28,7 +28,7 @@ best_value = f(best_solution[0], best_solution[1])
 
 T = Ti
 niter = 0
-max_iter = 1e6
+max_iter = 1e5
 
 # Epsiltion value
 eps = 1 - (Tf/Ti)**(max_iter**-1)
@@ -51,8 +51,8 @@ while T > Tf:
             best_solution = new_solution
             best_value = new_value
     
-    # Cooling schedule
-    T *= (1 - eps)
+    # Cooling schedule (Lundy & Mees (1986))
+    T /= 1 + eps * T
 
     niter += 1
 time_end = time.time()
@@ -61,10 +61,8 @@ print(
     f"""
     Simulated Annealling Solution
     Best solution found = {best_solution[0]}, {best_solution[1]}
-    Value of best = {best_value}
+    Value of best = {float(best_value)}
     No. iterations = {niter}
     Time elasped = {time_end - time_start}s
     """
 )
-    
-
