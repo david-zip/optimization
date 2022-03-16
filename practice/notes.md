@@ -10,6 +10,7 @@
 
 - Algorithm functions well and it is able to graphically show the solutions found by each particle at each iteration
 - Current test shows the algorithm **struggles** to find optimal solution (unsure why)
+  - Somehow fixed the algorithm by writing it in OOP format???
 - How can I graphically show the data?  
   - Is there another way that may be better to do this?
 

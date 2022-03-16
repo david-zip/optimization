@@ -8,16 +8,16 @@ import numpy as np
 
 class SA():
     """
-    Artificial bee colony class
+    Simulated annealling
     """
 
     def __init__(self, xBounds, yBounds, Ti=1, Tf=0.1, maxIter=1000):
         """
         Initialize algorithm hyper-parameters
-        
+
         xBounds = x-axis boundaries
-        
-        yBounds = y-axis boundaries
+
+        yBounds = y-axis boundarie
 
         Ti = Initial temperature (default: 1)
 
@@ -89,20 +89,20 @@ class SA():
 
         return self.T
 
-    def algorithm(self, f, show=True, temp_list=False):
+    def algorithm(self, f, print_output=True, temp_list=False):
         """
         Simulated annealling algorithm
 
-        print=True - Prints final solution, objective function of solution, number of iterations, and time elapsed
+        print_output = Prints final solution, objective function of solution, number of iterations, and time elapsed (default: True)
+        
+        temp_list = Returns list of temperatures (default: False)
         """
-        best_solutions = []
         best_values = []
         temperature_list = []
 
         self.initialize(f)
 
         # Store values in a list
-        best_solutions.append(self.best_solution)
         best_values.append(self.best_value)
         temperature_list.append(self.T)
 
@@ -114,7 +114,6 @@ class SA():
             self.cooling_schedule()
 
             # Store values in a list    
-            best_solutions.append(self.best_solution)
             best_values.append(self.best_value)
             temperature_list.append(self.T)
 
@@ -122,7 +121,7 @@ class SA():
             nIter += 1
         time_end = time.time()
 
-        if show == True:
+        if print_output == True:
             print(
     f"""
     Simulated Annealling Solution
@@ -133,15 +132,15 @@ class SA():
     """
                 )
 
-        return best_solutions, best_values, (temperature_list if temp_list==True else None)
+        return best_values, (temperature_list if temp_list==True else None)
 
 if __name__=="__main__":
     
     def f(x,y):
         return x**2 + y**2 
     
-    xBounds = [-1,1]
-    yBounds = [-1,1]
+    xBounds = [-3,3]
+    yBounds = [-3,3]
 
     test = SA(xBounds, yBounds, Ti=100, Tf=0.01, maxIter=10000)
     test.algorithm(f)

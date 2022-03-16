@@ -11,7 +11,7 @@ class ABC():
     Artificial bee colony class
     """
 
-    def __init__(self, xBounds: list[int], yBounds: list[int]):
+    def __init__(self, xBounds, yBounds):
         """
         Initialize optimization bounds
         """

@@ -6,7 +6,7 @@ Date: 13/03/22
 from algorithms.simulated_annealling import SA
 
 def f(x, y):
-    "Defines objective function"
+    "Rosenbrock test function"
     a = 1
     b = 100
     return (a - x)**2 + b*(y - x**2)**2
