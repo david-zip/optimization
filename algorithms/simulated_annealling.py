@@ -1,5 +1,5 @@
 """
-Simulated Annealling Class
+Simulated Annealling
 
 Date: 13/03/22
 """
@@ -8,7 +8,7 @@ import numpy as np
 
 class SA():
     """
-    Simulated annealling
+    Simulated annealling for minimisation problems
     """
 
     def __init__(self, xBounds, yBounds, Ti=1, Tf=0.1, maxIter=1000):
@@ -92,6 +92,8 @@ class SA():
     def algorithm(self, f, print_output=True, temp_list=False):
         """
         Simulated annealling algorithm
+
+        f = Objective function (input a python function)
 
         print_output = Prints final solution, objective function of solution, number of iterations, and time elapsed (default: True)
         

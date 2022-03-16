@@ -5,6 +5,7 @@
 - Whether it is better to have termination conditions or just maximum iteration counts?
   - Which is sufficient?
 - If termination conditions are better, which ones may be recommended?
+- Check solutions of "Antonio equation"
 
 ## Particle Swarm Optimization (PSO)
 
@@ -13,6 +14,10 @@
   - Somehow fixed the algorithm by writing it in OOP format???
 - How can I graphically show the data?  
   - Is there another way that may be better to do this?
+- What should the magnitude of the hyoer-parameters be?
+  - One paper said to use 2
+  - Another paper said to use 0.2
+- Weight decay?
 
 ## Artificial Bee Colony (ABC)
 
@@ -35,3 +40,5 @@
 
 - Unsure what the initial temperature shoud be
 - Best cooling schedule to use
+- SA does not work as well as PSO and ABC
+  - Unable to find global solution consistentally

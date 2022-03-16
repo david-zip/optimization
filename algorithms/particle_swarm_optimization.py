@@ -1,5 +1,5 @@
 """
-Particle Swarm Optimization Class
+Particle Swarm Optimization
 
 Date: 13/03/22
 """
@@ -8,20 +8,27 @@ import numpy as np
 
 class PSO():
     """
-    Particle swarm optimization
+    Particle swarm optimization for minimisation problems
     """
 
     def __init__(self, xBounds, yBounds, c1=0.2, c2=0.2, w=1, lbda=1 ,population=50, maxIter=1000):
         """
-        Initialize algorithm hyper-parameters
+        Initialize algorithm hyper-parameter
         
         xBounds = x-axis boundaries
+        
         yBounds = y-axis boundaries
+        
         c1 = Personal best influence (default: 0.2)
+        
         c2 = Global best influence (default: 0.2)
+        
         w = Initial weight (default: 1)
+        
         lbda = Weight decay exponent (default: 1)
+            
         population = Number of particles in swarm (default: 50)
+        
         maxIter = Maximum number of iterations (default: 1000)
         """
         # x boundaries
@@ -47,7 +54,7 @@ class PSO():
 
     def initialize(self, f):
         """
-        Initialize random starting solutions
+        Initialize random starting positions and velocities
         """
         self.particle_solution = []
         self.particle_value = []
@@ -69,7 +76,7 @@ class PSO():
 
             self.particle_velocity.append(np.array([vx,vy]))
 
-            # Initial personal best
+            # Initialize personal best
             self.pbest = []
             self.pbest_value = []
             
@@ -95,7 +102,7 @@ class PSO():
         min_value = min(self.particle_value)
 
         if min_value < self.gbest_value:
-            self.gbest_value = min(self.particle_value)
+            self.gbest_value = min_value
             self.gbest = self.particle_solution[self.particle_value.index(self.gbest_value)]
         
         return self.gbest, self.gbest_value
@@ -132,7 +139,10 @@ class PSO():
         """
         Simulated annealling algorithm
 
+        f = Objective function (input a python function)
+
         print_output = Prints final solution, objective function of solution, number of iterations, and time elapsed (default: True)
+        
         wght_list = Returns list of weights (default: False)
         """
         gbest_value_list = []
