@@ -46,7 +46,7 @@ for name in employed_bee_militia.keys():
 # Start ABC search algorithm
 best_value = 10
 iter_count = 0
-itermax = 1000 # Adjust this to change the maximum number of iterations
+itermax = 10000 # Adjust this to change the maximum number of iterations
 time_start = time.time()
 while iter_count < itermax:
     

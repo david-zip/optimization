@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 
 from algorithms.simulated_annealling import SA
 from algorithms.particle_swarm_optimization import PSO
+from algorithms.artificial_bee_colony import ABC
 
 from algorithms.test_equations import rosenbrock, antonio
 
@@ -23,6 +24,10 @@ SA_values, temperatures = sim_ann.algorithm(rosenbrock.f, temp_list=True)
 par_swa_op = PSO(xBounds, yBounds, maxIter=1e4)
 PSO_values, weights = par_swa_op.algorithm(rosenbrock.f, wght_list=True)
 
+# Artificial bee colont
+art_bee_col = ABC(xBounds, yBounds, maxIter=1e4)
+ABC_values = art_bee_col.algorithm(rosenbrock.f)
+
 print("\n'Antonio' Equation")
 # Simulated annealling
 sim_ann = SA(xBounds, yBounds, maxIter=1e6)
@@ -31,3 +36,7 @@ SA_values, temperatures = sim_ann.algorithm(antonio.f, temp_list=True)
 # Particle swarm optimization
 par_swa_op = PSO(xBounds, yBounds, maxIter=1e4)
 PSO_values, weights = par_swa_op.algorithm(antonio.f, wght_list=True)
+
+# Artificial bee colont
+art_bee_col = ABC(xBounds, yBounds, maxIter=1e4)
+ABC_values = art_bee_col.algorithm(antonio.f)

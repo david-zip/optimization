@@ -4,6 +4,7 @@ Simulated Annealling
 Date: 13/03/22
 """
 import time
+from typing import Any
 import numpy as np
 
 class SA():
@@ -11,7 +12,7 @@ class SA():
     Simulated annealling for minimisation problems
     """
 
-    def __init__(self, xBounds, yBounds, Ti=1, Tf=0.1, maxIter=1000):
+    def __init__(self, xBounds: list[float], yBounds: list[float], Ti: float = 1, Tf: float = 0.1, maxIter: int = 1000):
         """
         Initialize algorithm hyper-parameters
 
@@ -89,7 +90,7 @@ class SA():
 
         return self.T
 
-    def algorithm(self, f, print_output=True, temp_list=False):
+    def algorithm(self, f: Any, print_output: bool = True, temp_list: bool = False):
         """
         Simulated annealling algorithm
 

@@ -11,7 +11,7 @@ class PSO():
     Particle swarm optimization for minimisation problems
     """
 
-    def __init__(self, xBounds, yBounds, c1=0.2, c2=0.2, w=1, lbda=1 ,population=50, maxIter=1000):
+    def __init__(self, xBounds: list[float], yBounds: list[float], c1: float = 0.2, c2: float = 0.2, w: float = 1, lbda: float = 1 ,population: int = 50, maxIter: int = 1000):
         """
         Initialize algorithm hyper-parameter
         
@@ -61,7 +61,7 @@ class PSO():
         self.particle_velocity = []
 
         for i in range(self.population):
-            # Initialize random solutions
+            # Initialize random solution
             x = np.random.uniform(self.xlb, self.xub)
             y = np.random.uniform(self.ylb, self.yub)
 

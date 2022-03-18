@@ -108,7 +108,7 @@ while True:
                 # Counter the abandon food value
                 abandon_food[name] += 1
 
-    # Scout bees will abandon food source if not worked on after 5 iterations
+    # Scout bees will abandon food source if not worked on after 10 iterations
     for name in employed_bee_militia.keys():
         if abandon_food[name] > 10:
             # Scout bees will now search for new solutions between given bounds

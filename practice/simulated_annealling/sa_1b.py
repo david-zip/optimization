@@ -28,7 +28,7 @@ best_value = f(best_solution[0], best_solution[1])
 
 T = Ti
 niter = 0
-max_iter = 1000
+max_iter = 1e6
 
 # Epsiltion value
 eps = 1 - (Tf/Ti)**(max_iter**-1)
