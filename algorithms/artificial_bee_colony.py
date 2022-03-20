@@ -3,9 +3,7 @@ Artificial bee colony
 
 Date: 13/03/22
 """
-from re import X
 import time
-from typing import Any
 import numpy as np
 
 class ABC():
@@ -157,7 +155,7 @@ class ABC():
             self.best_value = min_sol
             self.best_solution = self.solutions[self.sol_value.index(min_sol)]
     
-    def algorithm(self, f: Any, print_output: bool = True):
+    def algorithm(self, f: any, print_output: bool = True):
         """
         Artificial bee colony algorithm
 
@@ -222,6 +220,14 @@ if __name__=="__main__":
     xBounds = [-3,3]
     yBounds = [-3,3]
 
-    test = ABC(xBounds, yBounds, population=50, maxIter=1e4)
-    test.algorithm(f)
+    test1 = ABC(xBounds, yBounds, population=50, maxIter=1e4)
+    test1.algorithm(f)
 
+    def f(x,y):
+        return (x + 2*y - 7)**2 + (2*x + y - 5)**2
+
+    xBounds = [-10,10]
+    yBounds = [-10,10]
+
+    test2 = ABC(xBounds, yBounds)
+    test2.algorithm(f)

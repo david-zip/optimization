@@ -6,15 +6,18 @@
   - Which is sufficient?
 - If termination conditions are better, which ones may be recommended?
 - Check solutions of "Antonio equation"
+- How can I graphically show the data?  
+  - Is there another way that may be better to do this?
+
+- Better just run each algorithm for 5 minutes
+  - Or function evaluations
 
 ## Particle Swarm Optimization (PSO)
 
 - Algorithm functions well and it is able to graphically show the solutions found by each particle at each iteration
 - Current test shows the algorithm **struggles** to find optimal solution (unsure why)
-  - Somehow fixed the algorithm by writing it in OOP format???
-- How can I graphically show the data?  
-  - Is there another way that may be better to do this?
-- What should the magnitude of the hyoer-parameters be?
+  - Somehow fixed the algorithm by writing it in OOP format(?)
+- What should the magnitude of the hyper-parameters be?
   - One paper said to use 2
   - Another paper said to use 0.2
 - Weight decay?

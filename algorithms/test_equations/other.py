@@ -1,12 +1,12 @@
 """
-"Antonio" test function 
+"Other" test function 
 
 Date: 13/03/22
 """
 from algorithms.simulated_annealling import SA
 
 def f(x, y):
-    "'Antonio' test function"
+    "'Other' test function"
     return (2*x)**2 + y**2 + (x - 3)*y
 
 if __name__=="__main__":

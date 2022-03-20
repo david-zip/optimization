@@ -13,7 +13,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def f(x, y):
-    "Defines objective function"
+    "Rosenbrock test function"
     a = 1
     b = 100
     return (a - x)**2 + b*(y - x**2)**2

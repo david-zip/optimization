@@ -11,7 +11,7 @@ class PSO():
     Particle swarm optimization for minimisation problems
     """
 
-    def __init__(self, xBounds: list[float], yBounds: list[float], c1: float = 0.2, c2: float = 0.2, w: float = 1, lbda: float = 1 ,population: int = 50, maxIter: int = 1000):
+    def __init__(self, xBounds: list[float], yBounds: list[float], c1: float = 0.2, c2: float = 0.2, w: float = 1, lbda: float = 1, population: int = 50, maxIter: int = 1000):
         """
         Initialize algorithm hyper-parameter
         
@@ -135,7 +135,7 @@ class PSO():
 
         return self.w
 
-    def algorithm(self, f, print_output=True, wght_list=False):
+    def algorithm(self, f: any, print_output: bool = True, wght_list: bool = False):
         """
         Simulated annealling algorithm
 
@@ -191,3 +191,12 @@ if __name__=="__main__":
 
     test = PSO(xBounds, yBounds, c1=0.3, c2=0.3, w=0.9, lbda=0.9 ,population=100, maxIter=10000)
     test.algorithm(f)
+
+    def f(x,y):
+        return (x + 2*y - 7)**2 + (2*x + y - 5)**2
+
+    xBounds = [-10,10]
+    yBounds = [-10,10]
+
+    test2 = PSO(xBounds, yBounds)
+    test2.algorithm(f)

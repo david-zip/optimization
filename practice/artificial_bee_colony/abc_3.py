@@ -11,7 +11,7 @@ import numpy as np
 
 # Define fitness function
 def f(x,y):
-    a = 1
+    a = 3
     b = 100
     return (a - x)**2 + b*(y - x**2)**2
 
@@ -139,7 +139,7 @@ while True:
     # Termination conditions (problem with this)
     rel_diff = np.abs(old_best_value - best_value)/old_best_value
 
-    if rel_diff <= 0.5:
+    if rel_diff <= 0.1:
         end_counter += 1
     else:
         end_counter = 0

@@ -4,7 +4,6 @@ Simulated Annealling
 Date: 13/03/22
 """
 import time
-from typing import Any
 import numpy as np
 
 class SA():
@@ -90,7 +89,7 @@ class SA():
 
         return self.T
 
-    def algorithm(self, f: Any, print_output: bool = True, temp_list: bool = False):
+    def algorithm(self, f: any, print_output: bool = True, temp_list: bool = False):
         """
         Simulated annealling algorithm
 
@@ -147,3 +146,12 @@ if __name__=="__main__":
 
     test = SA(xBounds, yBounds, Ti=100, Tf=0.01, maxIter=10000)
     test.algorithm(f)
+
+    def f(x,y):
+        return (x + 2*y - 7)**2 + (2*x + y - 5)**2
+
+    xBounds = [-10,10]
+    yBounds = [-10,10]
+
+    test2 = SA(xBounds, yBounds)
+    test2.algorithm(f)
