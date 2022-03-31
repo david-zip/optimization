@@ -33,11 +33,11 @@ class SA():
         self.ylb = min(yBounds)
         self.yub = max(yBounds)
 
-        # Temperatures
-        self.Ti = Ti
-        self.Tf = Tf
-        self.T = Ti
-        self.eps = 1 - (Tf/Ti)**(maxIter**(-1))
+        # Store initial tempeartures
+        self.Ti0 = Ti
+        self.Tf0 = Tf
+        self.T0 = Ti
+        self.eps0 = 1 - (Tf/Ti)**(maxIter**(-1))
 
         # Maximum iterations
         self.maxIter = maxIter
@@ -46,11 +46,19 @@ class SA():
         """
         Initialize random starting solutions
         """
+        # Initialize random positions
         x = np.random.uniform(self.xlb, self.xub)
         y = np.random.uniform(self.ylb, self.yub)
         
+        # Store best solutions
         self.best_solution = np.array([x,y])
         self.best_value = f(self.best_solution[0], self.best_solution[1])
+
+        # Initialize inital temperatures
+        self.Ti = self.Ti0
+        self.Tf = self.Tf0
+        self.T = self.Ti0
+        self.eps = self.eps0
 
         return self.best_solution, self.best_value
 
@@ -58,9 +66,11 @@ class SA():
         """
         Random neighbourhood search
         """
+        # Generate random solutions within bounds
         x = np.random.uniform(self.xlb, self.xub)
         y = np.random.uniform(self.ylb, self.yub)
 
+        # Generate new solutions
         self.new_solution = np.array([x,y])
         self.new_value = f(self.new_solution[0], self.new_solution[1])
 
@@ -89,25 +99,23 @@ class SA():
 
         return self.T
 
-    def algorithm(self, f: any, print_output: bool = True, temp_list: bool = False):
+    def algorithm(self, f: any, print_output: bool = True):
         """
         Simulated annealling algorithm
 
         f = Objective function (input a python function)
 
         print_output = Prints final solution, objective function of solution, number of iterations, and time elapsed (default: True)
-        
-        temp_list = Returns list of temperatures (default: False)
         """
         best_values = []
-        temperature_list = []
 
+        # Initialize solutions
         self.initialize(f)
 
         # Store values in a list
         best_values.append(self.best_value)
-        temperature_list.append(self.T)
 
+        # Start algorithm
         nIter = 0
         time_start = time.time()
         while self.T > self.Tf:
@@ -117,7 +125,6 @@ class SA():
 
             # Store values in a list    
             best_values.append(self.best_value)
-            temperature_list.append(self.T)
 
             # Iteration counter
             nIter += 1
@@ -134,7 +141,7 @@ class SA():
     """
                 )
 
-        return best_values, (temperature_list if temp_list==True else None)
+        return best_values
 
 if __name__=="__main__":
     

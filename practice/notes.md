@@ -20,6 +20,7 @@
 - What should the magnitude of the hyper-parameters be?
   - One paper said to use 2
   - Another paper said to use 0.2
+  - Tune parameters to match the problem I am working on
 - Weight decay?
 
 ## Artificial Bee Colony (ABC)

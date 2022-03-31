@@ -8,7 +8,7 @@ import numpy as np
 
 class PSO():
     """
-    Particle swarm optimization for minimisation problems
+    Particle swarm optimization for 2D minimisation problems
     """
 
     def __init__(self, xBounds: list[float], yBounds: list[float], c1: float = 0.2, c2: float = 0.2, w: float = 1, lbda: float = 1, population: int = 50, maxIter: int = 1000):
@@ -40,11 +40,11 @@ class PSO():
         self.yub = max(yBounds)
 
         # Update function parameters
-        self.c1 = c1        # Personal best influence
-        self.c2 = c2        # Global best influence
-        self.w = w          # Velocity weight
-        self.w0 = w         # Initial weight value
-        self.lbda = lbda    # Weight decay exponent
+        self.c1 = c1         # Personal best influence
+        self.c2 = c2         # Global best influence
+        self.w_0 = w          # Velocity weight
+        self.w0_0 = w         # Initial weight value
+        self.lbda0 = lbda     # Weight decay exponent
         
         # Swarm population size
         self.population = population
@@ -75,6 +75,11 @@ class PSO():
             vy = np.random.uniform(-1, 1)
 
             self.particle_velocity.append(np.array([vx,vy]))
+
+            # Update weight parameters
+            self.w = self.w_0           # Velocity weight
+            self.w0 = self.w0_0         # Initial weight value
+            self.lbda = self.lbda0      # Weight decay exponent
 
             # Initialize personal best
             self.pbest = []
@@ -135,15 +140,13 @@ class PSO():
 
         return self.w
 
-    def algorithm(self, f: any, print_output: bool = True, wght_list: bool = False):
+    def algorithm(self, f: any, print_output: bool = True):
         """
         Simulated annealling algorithm
 
         f = Objective function (input a python function)
 
         print_output = Prints final solution, objective function of solution, number of iterations, and time elapsed (default: True)
-        
-        wght_list = Returns list of weights (default: False)
         """
         gbest_value_list = []
         weight_list = []
@@ -151,7 +154,6 @@ class PSO():
         self.initialize(f)
 
         gbest_value_list.append(self.gbest_value)
-        weight_list.append(self.w)
 
         nIter = 0
         time_start = time.time()
@@ -162,7 +164,6 @@ class PSO():
 
             # Store value in a list
             gbest_value_list.append(self.gbest_value)
-            weight_list.append(self.w)
 
             # Iteration counter
             nIter += 1
@@ -179,7 +180,7 @@ class PSO():
     """
                 )
         
-        return gbest_value_list, (weight_list if wght_list==True else None)
+        return gbest_value_list
 
 if __name__=="__main__":
     
