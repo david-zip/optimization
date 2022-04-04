@@ -18,7 +18,7 @@ yBounds = [-5,5]
 
 print("\nRosenbrock Equation")
 # Simulated annealling
-sim_ann = SA(xBounds, yBounds, maxIter=1e6)
+sim_ann = SA(xBounds, yBounds, maxIter=1e4)
 R_SA_values = sim_ann.algorithm(rosenbrock.f)
 
 # Particle swarm optimization
@@ -31,7 +31,7 @@ R_ABC_values = art_bee_col.algorithm(rosenbrock.f)
 
 print("\n'Other' Equation")
 # Simulated annealling
-sim_ann = SA(xBounds, yBounds, maxIter=1e6)
+sim_ann = SA(xBounds, yBounds, maxIter=1e4)
 A_SA_values = sim_ann.algorithm(other.f)
 
 # Particle swarm optimization
