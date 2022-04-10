@@ -133,7 +133,7 @@ print(f"""
 
 # Plot graphs
 fig = plt.figure()
-plt.suptitle(f"Optimization Algorithms for Rosenbrock - {iterNumber} Iterations")
+plt.suptitle(f"Optimization Algorithms for Other - {iterNumber} Iterations")
 
 plt.plot(range(SA_1.maxIter), SA_mean, 'r-', label='Simulated Annealing')
 plt.fill_between(range(SA_1.maxIter), SA_error_high, SA_error_low, alpha=0.3, edgecolor='r', facecolor='r')
@@ -148,7 +148,7 @@ plt.xlabel("Number of Iterations")
 plt.ylabel("Objective Function")
 plt.legend(loc="upper right")
 
-plt.savefig(f'plots/comparisons/Rosenbrock Equation - {iterNumber} Iterations.png', dpi=300)
+plt.savefig(f'plots/comparisons/Other Equation - {iterNumber} Iterations.png')
 
 plt.show()
 
