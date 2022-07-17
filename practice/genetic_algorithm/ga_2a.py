@@ -155,4 +155,4 @@ if __name__=="__main__":
     print('Done!')
     decoded = decode(bounds, n_bits, best)
     print('f(%s) = %f' % (decoded, score))
-
+    

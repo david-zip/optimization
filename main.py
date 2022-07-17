@@ -9,6 +9,7 @@ import matplotlib.pyplot as plt
 from algorithms.simulated_annealling import SA
 from algorithms.particle_swarm_optimization import PSO
 from algorithms.artificial_bee_colony import ABC
+from algorithms.genetic_algorithm import GA
 
 from algorithms.test_equations import other, rosenbrock
 
@@ -25,9 +26,14 @@ R_SA_values = sim_ann.algorithm(rosenbrock.f)
 par_swa_op = PSO(xBounds, yBounds, maxIter=1e4)
 R_PSO_values = par_swa_op.algorithm(rosenbrock.f)
 
-# Artificial bee colont
+# Artificial bee colony
 art_bee_col = ABC(xBounds, yBounds, maxIter=1e4)
 R_ABC_values = art_bee_col.algorithm(rosenbrock.f)
+
+# Genetic algorithm
+genetic = GA(xBounds, yBounds, maxiter=1e4)
+R_GA_values = genetic.algorithm(rosenbrock.f)
+
 
 print("\n'Other' Equation")
 # Simulated annealling
@@ -38,9 +44,13 @@ A_SA_values = sim_ann.algorithm(other.f)
 par_swa_op = PSO(xBounds, yBounds, maxIter=1e4)
 A_PSO_values = par_swa_op.algorithm(other.f)
 
-# Artificial bee colont
+# Artificial bee colony
 art_bee_col = ABC(xBounds, yBounds, maxIter=1e4)
 A_ABC_values = art_bee_col.algorithm(other.f)
+
+# Genetic algorithm
+genetic = GA(xBounds, yBounds, maxiter=1e4)
+A_GA_values = genetic.algorithm(other.f)
 
 # Plot figures
 # Rosenbrock Equation
@@ -65,6 +75,13 @@ plt.ylabel("Objective function")
 plt.xlabel("Number of iterations")
 plt.savefig('plots/artificial_bee_colony/Rosenbrock Equation - Single Run.png', dpi=300)
 
+plt.figure()
+plt.suptitle("Genetic Algorithm with Rosenbrock Equation - Single Run")
+plt.plot(range(len(R_GA_values)), R_GA_values)
+plt.ylabel("Objective function")
+plt.xlabel("Number of iterations")
+plt.savefig('plots/genetic_algorithm/Rosenbrock Equation - Single Run.png', dpi=300)
+
 # 'Antonio' Equation
 plt.figure()
 plt.suptitle("Simulated Annealing with 'Other' Equation - Single Run")
@@ -86,6 +103,13 @@ plt.plot(range(len(A_ABC_values)), A_ABC_values)
 plt.ylabel("Objective function")
 plt.xlabel("Number of iterations")
 plt.savefig('plots/artificial_bee_colony/Other Equation - Single Run.png', dpi=300)
+
+plt.figure()
+plt.suptitle("Genetic algorithm with 'Other' Equation - Single Run")
+plt.plot(range(len(A_GA_values)), A_GA_values)
+plt.ylabel("Objective function")
+plt.xlabel("Number of iterations")
+plt.savefig('plots/genetic_algorithm/Other Equation - Single Run.png', dpi=300)
 
 # Create 3D plots
 xaxis = np.arange(xBounds[0], xBounds[1], 0.1)
