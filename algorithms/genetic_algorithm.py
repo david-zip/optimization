@@ -177,7 +177,7 @@ class GA():
 
     def algorithm(self, f: any, print_output: bool = True):
         """
-        Artificial bee colony algorithm
+        Genetic algorithm
 
         f = Objective function (input a python function)
 

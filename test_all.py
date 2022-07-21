@@ -174,7 +174,8 @@ print(f"""
 fig = plt.figure()
 plt.suptitle(f"Optimization Algorithms for Other - {iterNumber} Iterations")
 
-
+plt.plot(range(SA_1.maxIter), SA_mean, 'r-', label='Simulated Annealing')
+plt.fill_between(range(SA_1.maxIter), SA_error_high, SA_error_low, alpha=0.3, edgecolor='r', facecolor='r')
 
 plt.plot(range(PSO_1.maxIter), PSO_mean, 'g-', label='Particle Swarm Optimization')
 plt.fill_between(range(PSO_1.maxIter), PSO_error_high, PSO_error_low, alpha=0.3, edgecolor='g', facecolor='g')
