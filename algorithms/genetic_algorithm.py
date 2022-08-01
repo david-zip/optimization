@@ -179,7 +179,7 @@ class GA():
         """
         Genetic algorithm
 
-        f = Objective function (input a python function)
+        f = Objective function (input a python fuaYopie1nction)
 
         print_output = Prints final solution, objective function of solution, number of iterations, and time elapsed (default: True)
         """
